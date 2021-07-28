@@ -116,7 +116,7 @@ const App = () => {
   };
 
   const setImage = (canvi) => {
-   fabric.Image.fromURL( 'https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png' ,  function(img) {
+   fabric.Image.fromURL( './img/logo512.png' ,  function(img) {
     canvi.add(img);
       img.scaleToHeight(200);
       img.scaleToWidth(300);
