@@ -115,6 +115,14 @@ const App = () => {
     canvi.add(text);
   };
 
+  const setImage = (canvi) => {
+   fabric.Image.fromURL( 'https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png' ,  function(img) {
+    canvi.add(img);
+      img.scaleToHeight(200);
+      img.scaleToWidth(300);
+    });
+  }
+
   return (
     <div className="App">
       <h1>Fabric.js Example</h1>
@@ -123,6 +131,7 @@ const App = () => {
       <button onClick={() => addTriangle(canvas)}>Triangle</button>
       <button onClick={() => heart(canvas)}>Heart</button>
       <button onClick={() => text(canvas)}>Text</button>
+      <button onClick={() => setImage(canvas)}>Image</button>
       <div className="canvas title">
         <canvas id="canvas" />
       </div>
