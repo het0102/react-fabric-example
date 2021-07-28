@@ -54,7 +54,7 @@ const App = () => {
       left: 100,
       top: 100,
       radius: 50,
-      fill: "green",
+      fill: "green"
     });
     canvi.add(circle);
   };
@@ -78,7 +78,6 @@ const App = () => {
     const heart = new fabric.Path(
       "M0 200 v-200 h200 a100,100 90 0,1 0,200 a100,100 90 0,1 -200,0 z"
     );
-
     heart.set({
       originX: "center",
       originY: "center",
@@ -114,10 +113,41 @@ const App = () => {
 
   const setImage = (canvi) => {
     fabric.Image.fromURL("./logo512.png", function (img) {
+      img.filters.push(new fabric.Image.filters.Sepia());
+      img.applyFilters();
       canvi.add(img);
       img.scaleToHeight(100);
       img.scaleToWidth(100);
     });
+  };
+
+  const triangleTwo = (canvi) => {
+    const triangleTwo = new fabric.Path("M 0 0 L 200 100 L 170 200 z");
+    triangleTwo.set({
+      left: 120,
+      top: 120,
+      fill: "red",
+      stroke: "green",
+      opacity: 0.5,
+    });
+    canvi.add(triangleTwo);
+  };
+
+  const arrow = (canvi) => {
+    const arrow = new fabric.Path(
+      "M121.32,0L44.58,0C36.67,0,29.5,3.22,24.31,8.41\
+    c-5.19,5.19-8.41,12.37-8.41,20.28c0,15.82,12.87,28.69,28.69,28.69c0,0,4.4,\
+    0,7.48,0C36.66,72.78,8.4,101.04,8.4,101.04C2.98,106.45,0,113.66,0,121.32\
+    c0,7.66,2.98,14.87,8.4,20.29l0,0c5.42,5.42,12.62,8.4,20.28,8.4c7.66,0,14.87\
+    -2.98,20.29-8.4c0,0,28.26-28.25,43.66-43.66c0,3.08,0,7.48,0,7.48c0,15.82,\
+    12.87,28.69,28.69,28.69c7.66,0,14.87-2.99,20.29-8.4c5.42-5.42,8.4-12.62,8.4\
+    -20.28l0-76.74c0-7.66-2.98-14.87-8.4-20.29C136.19,2.98,128.98,0,121.32,0z"
+    );
+    arrow.set({
+      left: 100,
+      top: 200,
+    });
+    canvi.add(arrow);
   };
 
   return (
@@ -127,7 +157,9 @@ const App = () => {
       <button onClick={() => addCircle(canvas)}>Circle</button>
       <button onClick={() => addTriangle(canvas)}>Triangle</button>
       <button onClick={() => heart(canvas)}>Heart</button>
+      <button onClick={() => triangleTwo(canvas)}>Triangle-90</button>
       <button onClick={() => text(canvas)}>Text</button>
+      <button onClick={() => arrow(canvas)}>Arrow</button>
       <button onClick={() => setImage(canvas)}>Image</button>
       <div className="canvas title">
         <canvas id="canvas" />
