@@ -42,9 +42,6 @@ const App = () => {
       padding: 10,
       cornerStyle: "circle",
       borderDashArray: [3, 3],
-      //lockMovementX : true,
-      //lockMovementY : true,
-      //lockRotation: true
     });
     canvi.add(rect);
     canvi.renderAll();
@@ -116,12 +113,12 @@ const App = () => {
   };
 
   const setImage = (canvi) => {
-   fabric.Image.fromURL( './img/logo512.png' ,  function(img) {
-    canvi.add(img);
-      img.scaleToHeight(200);
-      img.scaleToWidth(300);
+    fabric.Image.fromURL("./logo512.png", function (img) {
+      canvi.add(img);
+      img.scaleToHeight(100);
+      img.scaleToWidth(100);
     });
-  }
+  };
 
   return (
     <div className="App">
