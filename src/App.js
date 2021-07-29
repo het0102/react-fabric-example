@@ -54,7 +54,7 @@ const App = () => {
       left: 100,
       top: 100,
       radius: 50,
-      fill: "green"
+      fill: "green",
     });
     canvi.add(circle);
   };
@@ -107,8 +107,36 @@ const App = () => {
       statefullCache: true,
       scaleX: 0.4,
       scaleY: 0.4,
+      fill: "skyblue",
+      shadow: "rgba(0,0,0,0.3) 15px 15px 15px",
+      stroke: "#ff1318",
+      strokeWidth: 1,
     });
     canvi.add(text);
+  };
+
+  var circle = new fabric.Circle({
+    radius: 100,
+    fill: "#eef",
+    scaleY: 0.5,
+    originX: "center",
+    originY: "center",
+  });
+
+  var textTitle = new fabric.Text("hello world", {
+    fontSize: 30,
+    originX: "center",
+    originY: "center",
+  });
+
+  const group = (canvi) => {
+    var group = new fabric.Group([circle, textTitle], {
+      left: 150,
+      top: 100,
+      angle: -10,
+    });
+
+    canvi.add(group);
   };
 
   const setImage = (canvi) => {
@@ -161,6 +189,7 @@ const App = () => {
       <button onClick={() => text(canvas)}>Text</button>
       <button onClick={() => arrow(canvas)}>Arrow</button>
       <button onClick={() => setImage(canvas)}>Image</button>
+      <button onClick={() => group(canvas)}>Group Shape</button>
       <div className="canvas title">
         <canvas id="canvas" />
       </div>
