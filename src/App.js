@@ -42,6 +42,9 @@ const App = () => {
       padding: 10,
       cornerStyle: "circle",
       borderDashArray: [3, 3],
+      //lockMovementX : true,
+      //lockMovementY : true,
+      //lockRotation: true
     });
     canvi.add(rect);
     canvi.renderAll();
@@ -78,6 +81,7 @@ const App = () => {
     const heart = new fabric.Path(
       "M0 200 v-200 h200 a100,100 90 0,1 0,200 a100,100 90 0,1 -200,0 z"
     );
+
     heart.set({
       originX: "center",
       originY: "center",
@@ -113,6 +117,41 @@ const App = () => {
       strokeWidth: 1,
     });
     canvi.add(text);
+  };
+
+  const textBoxSample = (canvi) => {
+    var textBoxSample = new fabric.Textbox("Write text here 😀 😛", {
+      width: 150,
+      height: 150,
+      left: 50,
+      top: 150,
+      fontFamily: "Arial",
+    });
+
+    canvi.add(textBoxSample);
+  };
+
+  const iTextSample = (canvi) => {
+    var iTextSample = new fabric.IText("2iText sample", {
+      left: 300,
+      top: 50,
+      fontFamily: "Arial",
+      fill: "#333",
+      lineHeight: 2.5,
+      styles: {
+        0: {
+          0: { underline: true, superscript: { size: 0.6, baseline: 0.11 } },
+          1: { textBackgroundColor: "red" },
+        },
+        1: {
+          0: { textBackgroundColor: "rgba(0,255,0,0.5)" },
+          4: { fontSize: 20 },
+        },
+      },
+    });
+    iTextSample.setSelectionStyles("superscript", 2, 9);
+    canvi.add(iTextSample);
+    canvi.renderAll();
   };
 
   var circle = new fabric.Circle({
@@ -190,6 +229,8 @@ const App = () => {
       <button onClick={() => arrow(canvas)}>Arrow</button>
       <button onClick={() => setImage(canvas)}>Image</button>
       <button onClick={() => group(canvas)}>Group Shape</button>
+      <button onClick={() => textBoxSample(canvas)}>Text Box Sample</button>
+      <button onClick={() => iTextSample(canvas)}>iText Sample</button>
       <div className="canvas title">
         <canvas id="canvas" />
       </div>
