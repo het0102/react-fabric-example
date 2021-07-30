@@ -143,10 +143,6 @@ const App = () => {
           0: { underline: true, superscript: { size: 0.6, baseline: 0.11 } },
           1: { textBackgroundColor: "red" },
         },
-        1: {
-          0: { textBackgroundColor: "rgba(0,255,0,0.5)" },
-          4: { fontSize: 20 },
-        },
       },
     });
     iTextSample.setSelectionStyles("superscript", 2, 9);
@@ -180,7 +176,11 @@ const App = () => {
 
   const setImage = (canvi) => {
     fabric.Image.fromURL("./logo512.png", function (img) {
-      img.filters.push(new fabric.Image.filters.Sepia());
+      //if we want to use filter then write below 2 line of code else for simple image no need to write.
+      img.filters.push(
+        new fabric.Image.filters.Grayscale(),
+        new fabric.Image.filters.Brightness({ brightness: 0.2 })
+      );
       img.applyFilters();
       canvi.add(img);
       img.scaleToHeight(100);
@@ -216,6 +216,12 @@ const App = () => {
     });
     canvi.add(arrow);
   };
+  
+  const clear = () => {
+    setCanvas(initCanvas([]));
+  };
+
+  
 
   return (
     <div className="App">
@@ -234,6 +240,10 @@ const App = () => {
       <div className="canvas title">
         <canvas id="canvas" />
       </div>
+      <br />
+      <button onClick={() => clear(canvas)}>clear</button>
+      <button>Undo</button>
+      <button>Redo</button>
       <h1 className="title">Fabric.js - React Example</h1>
       <button onClick={onAddCircle}>Circle</button>
       <button onClick={onAddRectangle}>Rectangle</button>
